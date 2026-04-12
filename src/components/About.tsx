@@ -2,11 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../utils/animationVariants';
 
-const VALUES = ['TRANSPARENCY', 'PRECISION', 'EXCELLENCE', 'LEGACY'];
-
 const About: React.FC = () => {
-  const headline = "Defining the Future of Indian Motoring.";
-  
+
   return (
     <section id="about-us" className="py-20 md:py-32 bg-neutral-50 border-t border-border-light">
       <div className="container mx-auto px-6">
