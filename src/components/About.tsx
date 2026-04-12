@@ -85,6 +85,7 @@ const About: React.FC = () => {
             </button>
           </motion.div>
         </motion.div>
+        </div>
       </div>
 
       {/* Bottom Black Bar */}
