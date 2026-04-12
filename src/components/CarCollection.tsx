@@ -34,39 +34,41 @@ const CarCollection: React.FC = () => {
           whileInView="animate"
           viewport={{ once: true, amount: 0.01 }}
           variants={staggerContainer}
-          className="mb-20 text-center"
+          className="mb-16 md:mb-20 text-center"
         >
           <motion.span 
             variants={fadeInUp}
-            className="text-[11px] font-sans font-bold tracking-widest-max text-accent uppercase block mb-4"
+            className="text-[10px] md:text-[11px] font-sans font-bold tracking-widest-max text-accent uppercase block mb-4"
           >
             PRECISION COLLECTION
           </motion.span>
           <motion.h2 
             variants={fadeInUp}
-            className="text-[48px] md:text-[64px] font-serif font-bold text-primary leading-tight"
+            className="text-[40px] md:text-[64px] font-serif font-bold text-primary leading-tight px-4"
           >
-            Curated For The <br /> Discerning Driver.
+            Curated For The <br className="hidden md:block" /> Discerning Driver.
           </motion.h2>
         </motion.div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {CATEGORIES.map((filter) => (
-            <motion.button
-              key={filter}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-8 py-3 text-[11px] font-sans font-bold uppercase tracking-widest transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] border rounded-2xl shadow-elegant-sm ${
-                activeFilter === filter
-                  ? 'bg-primary text-white border-primary shadow-inner-soft'
-                  : 'bg-white text-primary border-border-light hover:border-primary hover:text-black'
-              }`}
-            >
-              {filter}
-            </motion.button>
-          ))}
+        {/* Filter Tabs - Scrollable on mobile */}
+        <div className="flex justify-start md:justify-center overflow-x-auto no-scrollbar pb-8 mb-8 md:mb-16 px-6 -mx-6">
+          <div className="flex gap-3 min-w-max md:min-w-0">
+            {CATEGORIES.map((filter) => (
+              <motion.button
+                key={filter}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-6 md:px-8 py-3 text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] border rounded-2xl shadow-elegant-sm whitespace-nowrap ${
+                  activeFilter === filter
+                    ? 'bg-primary text-white border-primary shadow-inner-soft'
+                    : 'bg-white text-primary border-border-light hover:border-primary hover:text-black'
+                }`}
+              >
+                {filter}
+              </motion.button>
+            ))}
+          </div>
         </div>
 
         {/* Grid */}

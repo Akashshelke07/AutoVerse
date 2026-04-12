@@ -7,9 +7,9 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-white pt-32">
+    <footer className="bg-white pt-20 md:pt-32 border-t border-border-light">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-16 md:mb-24">
           {/* Column 1 - Brand */}
           <div className="space-y-8">
             <h2 className="text-32px font-serif font-bold tracking-tighter text-primary uppercase">

@@ -14,21 +14,21 @@ const StatItem: React.FC<StatItemProps> = ({ label, value, suffix = "", icon }) 
   const { count, ref } = useCountUp(value);
   
   return (
-    <div ref={ref} className="text-center p-8 md:border-r border-white/10 last:border-0 group transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
+    <div ref={ref} className="text-center p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/10 last:border-0 group transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
       <div className="flex flex-col items-center">
         <motion.div 
           initial={{ scale: 0.5, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-accent mb-4"
+          className="text-accent mb-3 md:mb-4"
         >
           {icon}
         </motion.div>
-        <div className="text-[48px] md:text-[64px] font-serif font-bold text-white mb-2 leading-none flex items-baseline">
+        <div className="text-[40px] md:text-[64px] font-serif font-bold text-white mb-2 leading-none flex items-baseline">
           {count}
-          <span className="text-accent text-[24px] md:text-[32px] ml-1">{suffix}</span>
+          <span className="text-accent text-[20px] md:text-[32px] ml-1">{suffix}</span>
         </div>
-        <div className="text-[11px] font-sans font-bold tracking-[0.2em] uppercase text-secondary group-hover:text-white transition-colors duration-300">
+        <div className="text-[10px] md:text-[11px] font-sans font-bold tracking-[0.2em] uppercase text-secondary group-hover:text-white transition-colors duration-300">
           {label}
         </div>
       </div>
@@ -38,14 +38,14 @@ const StatItem: React.FC<StatItemProps> = ({ label, value, suffix = "", icon }) 
 
 const StatsBar: React.FC = () => {
   return (
-    <div className="w-full bg-primary border-y border-primary">
-      <div className="container mx-auto px-6">
+    <div className="w-full bg-primary border-y border-primary relative z-10">
+      <div className="container mx-auto px-0 md:px-6">
         <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="grid grid-cols-2 md:grid-cols-4"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10"
         >
           <motion.div variants={fadeInUp}>
             <StatItem 

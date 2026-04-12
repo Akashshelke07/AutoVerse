@@ -5,7 +5,7 @@ import { fadeInUp, staggerContainer } from '../utils/animationVariants';
 
 const Hero: React.FC = () => {
   return (
-    <section className="min-h-screen flex items-center bg-white pt-24 overflow-hidden">
+    <section className="min-h-screen flex items-center bg-white pt-28 md:pt-32 overflow-hidden">
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         
         {/* Left Content */}
@@ -13,18 +13,18 @@ const Hero: React.FC = () => {
           variants={staggerContainer}
           initial="initial"
           animate="animate"
-          className="flex flex-col space-y-8"
+          className="flex flex-col space-y-6 md:space-y-8"
         >
           <motion.span 
             variants={fadeInUp}
-            className="text-11px font-sans font-semibold tracking-widest-max text-accent uppercase"
+            className="text-[10px] md:text-[11px] font-sans font-semibold tracking-widest-max text-accent uppercase"
           >
             INDIA’S PREMIER CAR SHOWCASE
           </motion.span>
           
           <motion.h1 
             variants={fadeInUp}
-            className="text-72px md:text-96px font-bold font-serif leading-[0.95] text-primary"
+            className="text-[56px] sm:text-[72px] md:text-[96px] font-bold font-serif leading-[0.9] md:leading-[0.95] text-primary"
           >
             Drive <br /> 
             <span className="text-secondary">India’s</span> <br /> 

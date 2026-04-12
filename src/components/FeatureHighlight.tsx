@@ -42,21 +42,21 @@ const FEATURES = [
 
 const FeatureHighlight: React.FC = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white relative z-10">
       <div className="container mx-auto px-6">
         <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {FEATURES.map((feature, i) => (
             <motion.div
               key={i}
               variants={fadeInUp}
               whileHover={{ y: -8, scale: 1.01 }}
-              className="p-10 border border-border-light rounded-2xl hover:border-primary transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-elegant-sm hover:shadow-elegant bg-white overflow-hidden relative"
+              className="p-8 md:p-10 border border-border-light rounded-2xl hover:border-primary transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-elegant-sm hover:shadow-elegant bg-white overflow-hidden relative group"
             >
               <motion.div 
                 className="w-16 h-16 bg-white border border-border-light flex items-center justify-center mb-8 rounded-2xl group-hover:bg-primary group-hover:text-white transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] overflow-hidden"

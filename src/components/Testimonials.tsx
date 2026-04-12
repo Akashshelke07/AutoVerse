@@ -16,9 +16,9 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section className="py-32 bg-neutral-50 overflow-hidden">
+    <section className="py-20 md:py-32 bg-neutral-50 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
           <motion.div
             initial="initial"
             whileInView="animate"
@@ -27,13 +27,13 @@ const Testimonials: React.FC = () => {
           >
             <motion.span 
               variants={fadeInUp}
-              className="text-11px font-sans font-bold tracking-widest-max text-accent uppercase block mb-4"
+              className="text-[10px] md:text-[11px] font-sans font-bold tracking-widest-max text-accent uppercase block mb-4"
             >
               VOICES OF AUTOVERSE
             </motion.span>
             <motion.h2 
               variants={fadeInUp}
-              className="text-48px md:text-64px font-serif font-bold text-primary leading-tight"
+              className="text-[40px] md:text-[64px] font-serif font-bold text-primary leading-tight px-4"
             >
               Driven by <br /> Passion.
             </motion.h2>
