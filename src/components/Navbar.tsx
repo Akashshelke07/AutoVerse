@@ -35,9 +35,9 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between relative pointer-events-auto">
         {/* Logo */}
-        <div className="z-50 flex items-center bg-white rounded-full shadow-elegant px-5 py-2 border border-border-light/50">
+        <a href="#home" className="z-50 flex items-center bg-white rounded-full shadow-elegant px-5 py-2 border border-border-light/50 hover:shadow-elegant-lg transition-shadow duration-300">
           <img src="/images/autoverse-logo.png" alt="AutoVerse Logo" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
-        </div>
+        </a>
 
         {/* Desktop Navigation & CTA wrapped in pill */}
         <div className="hidden lg:flex items-center gap-x-8 xl:gap-x-12 bg-white px-8 py-3 rounded-[3rem] shadow-elegant border border-border-light/50 relative">
