@@ -1,7 +1,18 @@
+import React, { useState } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    console.log('Newsletter Subscription:', email);
+    alert('Welcome to the AutoVerse Club! You will now receive our exclusive updates.');
+    setEmail('');
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -62,18 +73,22 @@ const Footer: React.FC = () => {
           {/* Column 4 - Newsletter */}
           <div className="space-y-8">
             <h4 className="text-[11px] font-sans font-bold tracking-widest uppercase text-accent">Stay Ahead</h4>
-            <div className="relative flex flex-col space-y-4">
+            <form onSubmit={handleSubscribe} className="relative flex flex-col space-y-4">
               <input 
                 type="email" 
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="EMAIL ADDRESS"
                 className="w-full border border-border-light rounded-2xl py-4 px-6 bg-transparent text-[11px] font-sans tracking-widest focus:outline-none focus:border-primary transition-all duration-300 placeholder:text-neutral-400"
               />
               <button 
+                type="submit"
                 className="w-full btn btn-primary py-4 rounded-2xl shadow-elegant hover:bg-neutral-800 transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
               >
                 JOIN THE CLUB
               </button>
-            </div>
+            </form>
             <p className="text-[11px] font-sans text-secondary italic">
               Receive updates on new collections and exclusive previews.
             </p>
@@ -100,11 +115,11 @@ const Footer: React.FC = () => {
       <div className="bg-primary py-8 overflow-hidden">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[11px] font-sans font-medium text-neutral-400 tracking-widest">
-            &copy; 2026 AUTOVERSE INDIA. ALL RIGHTS RESERVED.
+            &copy; {new Date().getFullYear()} AUTOVERSE INDIA. ALL RIGHTS RESERVED.
           </p>
           <div className="flex space-x-8 text-[11px] font-sans font-medium text-neutral-400 tracking-widest uppercase">
-            <a href="#" className="hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-border-light decoration-1">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-border-light decoration-1">Terms of Service</a>
+            <a href="#/privacy" className="hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-border-light decoration-1">Privacy Policy</a>
+            <a href="#/terms" className="hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-border-light decoration-1">Terms of Service</a>
           </div>
         </div>
       </div>

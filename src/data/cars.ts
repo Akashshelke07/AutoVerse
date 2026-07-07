@@ -139,19 +139,5 @@ export const cars: Car[] = [
       transmission: 'Manual/AMT'
     },
     image: '/images/creta.png'
-  },
-  {
-    id: '10',
-    name: 'XUV700',
-    brand: 'Mahindra',
-    category: 'SUV',
-    year: 2024,
-    price: '₹13.99 - 26.99 Lakh',
-    specs: {
-      engine: '2.2L mHawk',
-      power: '182 BHP',
-      transmission: 'Automatic'
-    },
-    image: '/images/treta.png' // Typo fixed in code later
   }
 ];

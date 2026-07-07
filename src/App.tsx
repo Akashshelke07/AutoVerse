@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -8,17 +9,44 @@ import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import About from './components/About';
 import Footer from './components/Footer';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+import AboutPage from './components/AboutPage';
+import TestDrivePage from './components/TestDrivePage';
 
 /**
  * AutoVerse - Premium Indian Automotive Showcase
  * Built with React, TypeScript, Tailwind CSS, and Framer Motion.
  */
 function App() {
-  return (
-    <div className="relative min-h-screen bg-white selection:bg-accent selection:text-white">
-      {/* Fixed Navigation */}
-      <Navbar />
+  const [currentPath, setCurrentPath] = useState(window.location.hash);
 
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash;
+      setCurrentPath(hash);
+      if (hash === '#/privacy' || hash === '#/terms' || hash === '#/about' || hash === '#/test-drive') {
+        window.scrollTo(0, 0);
+      }
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  const renderContent = () => {
+    if (currentPath === '#/privacy') {
+      return <PrivacyPolicy />;
+    }
+    if (currentPath === '#/terms') {
+      return <TermsOfService />;
+    }
+    if (currentPath === '#/about') {
+      return <AboutPage />;
+    }
+    if (currentPath === '#/test-drive') {
+      return <TestDrivePage />;
+    }
+    return (
       <main>
         {/* Sections */}
         <section id="home">
@@ -37,6 +65,15 @@ function App() {
 
         <About />
       </main>
+    );
+  };
+
+  return (
+    <div className="relative min-h-screen bg-white selection:bg-accent selection:text-white">
+      {/* Fixed Navigation */}
+      <Navbar />
+
+      {renderContent()}
 
       {/* Global Footer */}
       <Footer />

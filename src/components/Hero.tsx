@@ -43,10 +43,13 @@ const Hero: React.FC = () => {
             variants={fadeInUp}
             className="flex flex-wrap gap-4"
           >
-            <button className="btn btn-primary">
+            <a href="#cars" className="btn btn-primary inline-block text-center">
               Explore Cars
-            </button>
-            <button className="btn btn-outline">
+            </a>
+            <button 
+              onClick={() => alert('Demo video player would open here in a full app!')}
+              className="btn btn-outline"
+            >
               Watch Demo
             </button>
           </motion.div>

@@ -77,9 +77,9 @@ const About: React.FC = () => {
           </motion.p>
           
           <motion.div variants={fadeInUp} className="pt-8">
-            <button className="btn btn-outline border-primary">
+            <a href="#/about" className="btn btn-outline border-primary inline-block text-center">
               Learn Our Story
-            </button>
+            </a>
           </motion.div>
         </motion.div>
         </div>

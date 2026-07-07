@@ -29,67 +29,69 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white border-b border-primary",
-        isScrolled ? "shadow-elegant py-3" : "py-5"
+        "absolute top-0 left-0 w-full z-50 transition-all duration-300 pointer-events-none",
+        isScrolled ? "pt-4" : "pt-8"
       )}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between relative">
-        {/* Logo/Wordmark */}
-        <div className="text-[20px] md:text-[24px] font-bold font-serif uppercase tracking-tighter text-primary z-50">
-          AutoVerse
+      <div className="container mx-auto px-6 flex items-center justify-between relative pointer-events-auto">
+        {/* Logo */}
+        <div className="z-50 flex items-center bg-white rounded-full shadow-elegant px-5 py-2 border border-border-light/50">
+          <img src="/images/autoverse-logo.png" alt="AutoVerse Logo" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-x-8 xl:gap-x-12 relative">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase().replace(' ', '-')}`}
-              className="relative text-[12px] xl:text-[14px] font-medium font-sans tracking-widest text-primary hover:text-accent transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] whitespace-nowrap"
-              onMouseEnter={() => setHoveredLink(link)}
-              onMouseLeave={() => setHoveredLink(null)}
-            >
-              {link}
-              {hoveredLink === link && (
-                <>
-                  <motion.div
-                    layoutId="underline"
-                    className="absolute -bottom-1 left-0 w-full h-[2px] bg-accent"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                  />
-                  {/* Micro-dot follow */}
-                  <motion.div
-                    layoutId="dot"
-                    className="absolute -top-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                </>
-              )}
-            </a>
-          ))}
-        </div>
+        {/* Desktop Navigation & CTA wrapped in pill */}
+        <div className="hidden lg:flex items-center gap-x-8 xl:gap-x-12 bg-white px-8 py-3 rounded-[3rem] shadow-elegant border border-border-light/50 relative">
+          <div className="flex items-center gap-x-8 xl:gap-x-12">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link}
+                href={`#${link.toLowerCase().replace(' ', '-')}`}
+                className="relative text-[12px] xl:text-[14px] font-medium font-sans tracking-widest text-primary hover:text-accent transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] whitespace-nowrap"
+                onMouseEnter={() => setHoveredLink(link)}
+                onMouseLeave={() => setHoveredLink(null)}
+              >
+                {link}
+                {hoveredLink === link && (
+                  <>
+                    <motion.div
+                      layoutId="underline"
+                      className="absolute -bottom-1 left-0 w-full h-[2px] bg-accent"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    />
+                    {/* Micro-dot follow */}
+                    <motion.div
+                      layoutId="dot"
+                      className="absolute -top-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  </>
+                )}
+              </a>
+            ))}
+          </div>
 
-        {/* Desktop CTA Button */}
-        <div className="hidden md:flex items-center">
-          <motion.button 
+          <div className="w-[1px] h-6 bg-border-light hidden lg:block"></div>
+
+          <motion.a 
+            href="#/test-drive"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn btn-primary px-5 py-2.5 md:px-6 md:py-3 font-sans text-[11px] xl:text-[13px] uppercase tracking-widest bg-primary text-white whitespace-nowrap transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-elegant hover:bg-neutral-800"
+            className="btn btn-primary px-6 py-2.5 md:px-8 md:py-3 font-sans text-[11px] xl:text-[13px] uppercase tracking-widest bg-primary text-white whitespace-nowrap transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-elegant hover:bg-neutral-800 rounded-full inline-block text-center"
           >
             Book a Test Drive
-          </motion.button>
+          </motion.a>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center z-50">
+        <div className="lg:hidden flex items-center z-50 bg-white rounded-full shadow-elegant p-3 border border-border-light/50">
           <button 
             onClick={toggleMenu}
-            className="p-2 text-primary hover:text-accent transition-colors duration-300"
+            className="text-primary hover:text-accent transition-colors duration-300"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
@@ -124,12 +126,13 @@ const Navbar: React.FC = () => {
                   transition={{ delay: NAV_LINKS.length * 0.1 + 0.3 }}
                   className="pt-10"
                 >
-                  <button 
-                    className="btn btn-primary px-8 py-4 font-sans text-[13px] uppercase tracking-widest"
+                  <a 
+                    href="#/test-drive"
+                    className="btn btn-primary px-8 py-4 font-sans text-[13px] uppercase tracking-widest inline-block text-center"
                     onClick={closeMenu}
                   >
                     Book a Test Drive
-                  </button>
+                  </a>
                 </motion.div>
               </div>
 
